@@ -1,0 +1,28 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="GET">
+{%csrf_token%}
+<center>
+    <table class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+    font-family="sans-serif" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Location</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for Location in Locationlist%}
+            <tr>
+                <td>{{Location.Locationid}}</td>
+                <td>{{Location.Locationtype}}</td>
+                <td><a href="{% url 'Locationtypeedit' id=Location.Locationid %}">Edit</a></td>
+            
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</center>
+</form>
+{%endblock%}

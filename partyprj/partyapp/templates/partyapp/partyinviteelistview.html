@@ -1,0 +1,49 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="POST">
+    {%csrf_token%}
+    <center>
+        <table class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+        font-family="sans-serif">
+            <thead>
+            <tr>
+                
+                <th>Party</th>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>Games</th>
+                <th>Invitee</th>
+                
+            </tr>
+
+            </thead>
+            <tbody>
+                {% for item in partylist%}
+                <tr>
+                   
+                    <td>{{item.Partyname}}</td>
+                    <td>{{item.Venue}}</td>
+                    <td>{{item.Date}}</td>
+                    <td><a href="{% url 'Partygamelistfrombridgetable' Partyname=item.Partyname %}">Party Info</a></td>
+                    <td><a href="{%url 'Partyinviteelistfrombridgetable' Partyname=item.Partyname %}">Invitee Info</a></td>
+                </tr>
+                {%endfor%}
+
+            </tbody>
+           
+        </table>
+    
+    </center>
+    <center>
+       <div class="card">
+        <ul>  
+        {%for invitee in inviteelist%}
+        <li>{{invitee.Invitees.Inviteename}}</li> 
+        {%endfor%}
+   
+        </ul>
+        </div>
+    </center>
+
+</form>
+{%endblock%}

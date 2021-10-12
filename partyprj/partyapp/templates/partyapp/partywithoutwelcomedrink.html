@@ -1,0 +1,18 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="GET">
+    {%csrf_token%}
+    <center>
+        <div class="card">
+        <ul>  
+            {%for menu in menulist%}
+  
+            <li>{{menu.Partyname}}</li> 
+            {%endfor%}
+       
+        </ul>
+            </div>
+    </center>
+
+</form>
+{%endblock%}

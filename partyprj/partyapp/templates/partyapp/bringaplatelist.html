@@ -1,0 +1,38 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="GET">
+    {%csrf_token%}
+    
+    <table  class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+    font-family="sans-serif">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Party</th>
+            <th>Invitees</th>
+            <th>Menu</th>
+            <th>Quantity</th>
+            <th>Edit</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {%for bringaplate in bringaplatelist%}
+
+    <tr>
+        <td>{{bringaplate.Id}}</td>
+        <td>{{bringaplate.Party}}</td>
+        <td>{{bringaplate.Invitees}}</td>
+        <td>{{bringaplate.Menu}}</td>
+        <td>{{bringaplate.Quantity}}</td>
+        <td><a href="{% url 'Bringaplatemodeledit' id=bringaplate.Id %}">Edit</a></td>
+       
+    </tr>
+    {%endfor%}
+    </tbody>
+
+    </table>
+
+</form>
+{%endblock%}
+

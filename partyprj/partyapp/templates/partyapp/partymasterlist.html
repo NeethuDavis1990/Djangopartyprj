@@ -1,0 +1,40 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="GET">
+    {%csrf_token%}
+    <table  class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+    font-family="sans-serif">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Party Name</th>
+                <th>Venu</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Menu</th>
+                <th>Edit</th>
+                <th>Invitee</th>
+                <th>Menu Details</th>
+            </tr>
+            </thead>
+            <tbody>
+                {%for party in partylist%}
+                <tr>
+                    <td>{{party.Partyid}}</td>
+                    <td>{{party.Partyname}}</td>
+                    <td>{{party.Venue}}</td>
+                    <td>{{party.Date}}</td>
+                    <td>{{party.Time}}</td>
+                    <td>{{party.Menupreference}}</td>
+                    <td><a href="{% url 'Partymasteredit' id=party.Partyid %}">Edit</a></td>
+                    <td><a href="{% url 'Partyinviteelist' id=party.Partyid %}">Invitees</a>
+                    <td><a href="{% url 'Party_menu_combodetails' id=party.Partyid %}">Menu Details</a></td>
+                    </tr>
+                {%endfor%}
+
+            </tbody>
+    </table>
+
+
+</form>
+{%endblock%}

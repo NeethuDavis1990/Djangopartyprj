@@ -1,0 +1,27 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="GET">
+    {%csrf_token%}
+    <table class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+    font-family="sans-serif">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Area</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for area in arealist%}
+            <tr>
+                <td>{{area.Id}}</td>
+                <td>{{area.Area}}</td>
+                <td><a href="{%  url 'Areamastermodeledit' id=area.Id %}">Edit</a></td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</form>
+{%endblock%}

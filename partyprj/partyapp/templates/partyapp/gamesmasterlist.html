@@ -1,0 +1,40 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="GET"> 
+<center>
+    <table  class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+    font-family="sans-serif">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Games</th>
+            <th>Description</th>
+            <th>Max.No</th>
+            <th>Min.No</th>
+            <th>Location</th>
+            <th>Edit</th>
+        
+        </tr>
+
+    </thead>
+    <tbody>
+        {%for game in gameslist%}
+        <tr>
+            <td>{{game.Gameid}}</td>
+            <td>{{game.Game}}</td>
+            <td>{{game.Description}}</td>
+            <td>{{game.Maxparticipants}}</td>
+            <td>{{game.Minparticipants}}</td>
+            <td>{{game.Locationtype}}</td>
+            <td><a href="{% url 'gamesmasteredit' id=game.Gameid %}">Edit</a></td>
+
+        </tr>
+        {%endfor%}
+
+    </tbody>
+
+    </table>
+</center>
+
+</form>
+{%endblock%}

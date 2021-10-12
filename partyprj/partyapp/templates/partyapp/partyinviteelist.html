@@ -1,0 +1,39 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="POST">
+    {%csrf_token%}
+    <center>
+        <table class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+        font-family="sans-serif">
+            <thead>
+            <tr>
+               <th>Party</th> 
+               <th>Invitees</th>
+                
+            </tr>
+
+            </thead>
+            <tbody>
+                {% for item in inviteelist%}
+                <tr>
+                    <td>{{item.Party}}</td>
+                    <td>{{item.Invitees}}</td>
+            
+                </tr>
+                {%endfor%}
+
+            </tbody>
+           
+        </table>
+    
+    </center>
+
+    <center>
+        <div>
+            Add Invitee:<input type="text" id="Add_Invitee" name="Invitee_name" />
+            <input type="submit" value="save"/>
+        </div>
+    </center>
+    <input type="hidden" id="idParty" name="id" value="{{PartyId}}"/>
+</form>
+{%endblock%}

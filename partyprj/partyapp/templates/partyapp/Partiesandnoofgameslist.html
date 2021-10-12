@@ -1,0 +1,29 @@
+{% extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="GET">
+    {% csrf_token %}
+    <center>
+    <table class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+    font-family="sans-serif">
+        <thead>
+            <tr>
+                <th>Party</th>
+                <th>Game No</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for party in list%}
+            <tr>
+                <td>{{party.Partyname}}</td>
+                <td>{{party.num_game}}</td>
+               
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</center>
+
+</form>
+
+
+{%endblock%}

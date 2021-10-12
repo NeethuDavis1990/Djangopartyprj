@@ -1,0 +1,57 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="GET">
+    {%csrf_token%}
+    <center>
+        <table class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+        font-family="sans-serif">
+            <thead>
+            <tr>
+                
+                <th>Party</th>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Locationtype</th>
+                
+                
+            </tr>
+
+            </thead>
+            <tbody>
+                {% for item in partylist%}
+                <tr>
+                   
+                    <td>{{item.Partyname}}</td>
+                    <td>{{item.Venue}}</td>
+                    <td>{{item.Date}}</td>
+                    <td>{{item.Time}}</td>
+                    <td>{{item.Locationtype}}</td>
+                    
+                </tr>
+                {%endfor%}
+
+            </tbody>
+           
+        </table>
+    
+    </center>
+
+    <div id="page_links">
+    <ul>
+         
+   {% for i in anchorcount %}
+
+     <li> <a href="{% url 'Jquery_pagination_view1' currentpage=i %}">{{i|add:1}}</a></li>
+
+     {%endfor%}
+
+    
+    </ul>
+
+    </div>
+
+
+</form>
+
+{%endblock%}

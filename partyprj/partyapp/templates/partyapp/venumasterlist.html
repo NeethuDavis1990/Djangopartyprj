@@ -1,0 +1,31 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="GET">
+{%csrf_token%}
+<center>
+    <table class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+    font-family="sans-serif" >
+        <thead>
+         <tr>
+             <th>Id</th>
+             <th>Location</th>
+             <th>Venu</th>
+             <th>Edit</th>
+         </tr>
+        </thead>
+        <tbody>
+            {%for Venu in venulist%}
+            <tr>
+               <td>{{Venu.Venuid}}</td>
+               <td>{{Venu.Locationtype}}</td>
+               <td>{{Venu.Venu}}</td>
+               <td><a href="{% url 'Venumasteredit' id=Venu.Venuid %}">Edit</a></td>
+            </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+</center>
+
+</form>
+{%endblock%}

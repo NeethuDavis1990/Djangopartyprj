@@ -1,0 +1,17 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="POST">
+    {%csrf_token%}
+    <center>
+    <table>
+        {{partyhtml.as_table}}
+    </table>
+<input type="submit" value="save" />
+    </center>
+
+    
+<div>
+     {{error}}
+</div>
+</form>
+{%endblock%}

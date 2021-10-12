@@ -1,0 +1,36 @@
+{%extends 'partyapp/base.html'%}
+{% block body_content %}
+<form method="GET">
+    {%csrf_token%}
+    <table class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+    font-family="sans-serif">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Category</th>
+            <th>Preference</th>
+            <th>Area</th>
+            <th>Name</th>
+            <th>Edit</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for menu in menulist %}
+        <tr>
+            <td>{{menu.Id}}</td>
+            <td>{{menu.Menucategory}}</td>
+            <td>{{menu.Menupreference}}</td>
+            <td>{{menu.Area}}</td>
+            <td>{{menu.Menuname}}</td>
+            <td><a href="{% url 'Menumastermodeledit' id=menu.Id %}">Edit</a></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+
+
+    </table>
+
+
+</form>
+{%endblock%}

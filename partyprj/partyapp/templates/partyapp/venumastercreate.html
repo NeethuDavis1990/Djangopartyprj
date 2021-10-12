@@ -1,0 +1,15 @@
+{%extends 'partyapp/base.html'%}
+{%block body_content%}
+<form method="POST">
+{%csrf_token%}
+<center>
+    <table>
+        {{venuhtml.as_table}}
+    </table>
+</center>
+<center>
+    <input type="submit" value="save" />
+</center>
+
+</form>
+{%endblock%}

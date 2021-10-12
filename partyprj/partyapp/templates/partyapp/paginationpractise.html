@@ -1,0 +1,48 @@
+{% extends 'partyapp/base.html' %}
+{% block body_content%}
+<form method="GET">
+    {% csrf_token%}
+    <input type="text" name="searchterm" id="searchterm" 
+     value="{{searchterm}}"/>
+    <input type="submit" value="Search" />
+
+
+    <table class="table table-bordered", style="background-color: rgb(188, 235, 243)"
+    font-family="sans-serif">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Party</th>
+                <th>Venue</th>
+                <th>Menu</th>
+                <th>Location</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            {% for item in page.object_list %}
+            <tr>
+                <td>{{item.Partyid}}</td>
+                <td>{{item.Partyname}}</td>
+                <td>{{item.Venue}}</td>
+                <td>{{item.Menupreference}}</td>
+                <td>{{item.Locationtype}}</td>
+
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</form>
+<div class="page-links">
+    {% if page.has_previous %}
+    <a href="{% url 'Pagination_practise' %}?{% if searchterm %}searchterm={{searchterm}}&{%endif%}page={{ page.previous_page_number }}">Previous Page</a>
+    {% endif %} {% if page.has_next %}
+    <a href="{% url 'Pagination_practise' %}?{% if searchterm %}searchterm={{searchterm}}&{%endif%}page={{ page.next_page_number }}">Next Page</a>
+    {% endif %}
+  </div>
+
+
+
+{%endblock%}
